@@ -1,100 +1,100 @@
-# GitHub Portfolio Generator
+# Générateur de Portfolio GitHub
 
-A dynamic, data-driven portfolio application that automatically showcases your GitHub projects. Built with Flask and designed with a modern, responsive UI.
+Une application de portfolio dynamique axée sur les données qui présente automatiquement vos projets GitHub. Construit avec Flask et conçu avec une interface utilisateur moderne et responsive.
 
-## 🚀 Features
+## 🚀 Fonctionnalités
 
--   **GitHub Integration**: Automatically fetches your repositories, stars, and languages using the GitHub API.
--   **Featured Projects**: Highlight specific projects with custom metadata (images, descriptions) via `portfolio.json`.
--   **Dynamic SVGs**: Generates custom SVG visualizations for your repositories on the fly.
--   **Responsive Design**: Fully responsive layout that looks great on desktop and mobile.
--   **Docker Ready**: Containerized for easy deployment.
+-   **Intégration GitHub** : Récupère automatiquement vos dépôts, étoiles et langages via l'API GitHub.
+-   **Projets Phares** : Mettez en avant des projets spécifiques avec des métadonnées personnalisées (images, descriptions) via `portfolio.json`.
+-   **SVG Dynamiques** : Génère des visualisations SVG personnalisées pour vos dépôts à la volée.
+-   **Design Responsive** : Mise en page entièrement adaptée aux ordinateurs et aux mobiles.
+-   **Prêt pour Docker** : Conteneurisé pour un déploiement facile.
 
-## 🛠️ Tech Stack
+## 🛠️ Stack Technique
 
--   **Backend**: Python, Flask
--   **Frontend**: HTML5, CSS3, JavaScript
--   **Containerization**: Docker, Docker Compose
+-   **Backend** : Python, Flask
+-   **Frontend** : HTML5, CSS3, JavaScript
+-   **Conteneurisation** : Docker, Docker Compose
 
-## 📸 Screenshots
+## 📸 Captures d'écran
 
-### Featured Projects
+### Projets Phares
 ![NexusPad](public/images/nexusPad.png)
 
-### AI Assistant Integration
+### Intégration Assistant IA
 ![Jarvis](public/images/Jarvis.png)
 
-### Smart Home Dashboard
+### Tableau de Bord Domotique
 ![FamilyOS](public/images/FamilyOs.png)
 
 ## 📦 Installation
 
-### Using Docker (Recommended)
+### Avec Docker (Recommandé)
 
-1.  **Clone the repository:**
+1.  **Cloner le dépôt :**
     ```bash
-    git clone <your-repo-url>
+    git clone <votre-url-repo>
     cd github-portfolio
     ```
 
-2.  **Run with Docker Compose:**
+2.  **Lancer avec Docker Compose :**
     ```bash
     docker-compose up --build
     ```
 
-3.  **Access the application:**
-    Open your browser and navigate to `http://localhost:5000`.
+3.  **Accéder à l'application :**
+    Ouvrez votre navigateur et allez sur `http://localhost:5000`.
 
-### Local Development
+### Développement Local
 
-1.  **Clone the repository:**
+1.  **Cloner le dépôt :**
     ```bash
-    git clone <your-repo-url>
+    git clone <votre-url-repo>
     cd github-portfolio
     ```
 
-2.  **Create a virtual environment:**
+2.  **Créer un environnement virtuel :**
     ```bash
     python3 -m venv .venv
     source .venv/bin/activate
     ```
 
-3.  **Install dependencies:**
+3.  **Installer les dépendances :**
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Run the application:**
+4.  **Lancer l'application :**
     ```bash
     python app.py
     ```
 
 ## ⚙️ Configuration
 
-You can customize the featured projects and their details by editing the `portfolio.json` file.
+Vous pouvez personnaliser les projets mis en avant et leurs détails en modifiant le fichier `portfolio.json`.
 
-**Example `portfolio.json` structure:**
+**Exemple de structure `portfolio.json` :**
 
 ```json
 {
-  "RepoName": {
+  "NomDuRepo": {
     "featured": true,
-    "title": "Project Title",
-    "tagline": "Short description",
-    "stack": ["Tech1", "Tech2"],
+    "title": "Titre du Projet",
+    "tagline": "Courte description",
+    "stack": ["Techno1", "Techno2"],
     "highlights": [
-      "Feature 1",
-      "Feature 2"
+      "Fonctionnalité 1",
+      "Fonctionnalité 2"
     ],
     "links": {
-      "demo": "https://demo-url.com",
-      "video": "https://video-url.com"
+      "demo": "https://url-demo.com",
+      "video": "https://url-video.com"
     },
     "images": ["/static/images/screenshot.png"]
   }
 }
 ```
 
-## 📄 License
+## 📄 Licence
 
-[MIT License](LICENSE)
+[Licence MIT](LICENSE)
