@@ -1,0 +1,9 @@
+.venv
+.Dockerfile
+app.py
+docker-compose.yml
+portfolio.json
+public/
+requirements.txt
+services/
+templates/
