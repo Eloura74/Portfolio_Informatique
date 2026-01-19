@@ -166,15 +166,25 @@
     /* Hide Social Card on Mobile */
     .social-card {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
     /* Adjust Back to Top Button */
     .back-to-top {
-        bottom: 100px; /* Move it up to avoid footer */
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
-        opacity: 0.8; /* Make it less visible */
+        bottom: 130px; /* Move it higher up */
+        width: 40px;   /* Smaller */
+        height: 40px;
+        font-size: 0.9rem;
+        opacity: 0.5;  /* More discreet */
+        background: rgba(56, 189, 248, 0.5); /* Less intense background */
+        backdrop-filter: blur(5px);
+    }
+    
+    .back-to-top:hover {
+        opacity: 1;
+        background: var(--gradient-aurora);
     }
 }
 
