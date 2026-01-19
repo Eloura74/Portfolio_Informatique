@@ -1,0 +1,284 @@
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000; /* High z-index to be on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent body scroll when modal is open */
+    background-color: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background: rgba(15, 23, 42, 0.95); /* More opaque */
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow: hidden; /* Ensure header sticks */
+}
+
+.modal-header {
+    padding: 24px 40px;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-title {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.modal-body {
+    padding: 40px;
+    overflow-y: auto;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* MARKDOWN STYLES */
+.markdown-body { font-family: var(--font-body); line-height: 1.8; }
+.markdown-body h1, .markdown-body h2, .markdown-body h3 { 
+    color: var(--text-primary); 
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+.markdown-body h1 { font-size: 2.2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.8rem; }
+.markdown-body h2 { font-size: 1.6rem; }
+.markdown-body a { color: var(--accent-glow); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.2s; }
+.markdown-body a:hover { border-bottom-color: var(--accent-glow); }
+.markdown-body code { 
+    background: rgba(255,255,255,0.05); 
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    color: var(--text-primary);
+}
+.markdown-body pre {
+    background: #050914;
+    padding: 2rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--glass-border);
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+.markdown-body pre code {
+    background: transparent;
+    padding: 0;
+    border: none;
+    color: inherit;
+}
+.markdown-body img { max-width: 100%; border-radius: var(--radius-sm); opacity: 0.9; }
+
+/* EXPANDED MODAL */
+.expanded-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.expanded-modal.active {
+    opacity: 1;
+}
+
+.expanded-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.expanded-modal-container {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.expanded-modal.active .expanded-modal-container {
+    transform: scale(1);
+}
+
+.expanded-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.expanded-modal-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.expanded-modal-close {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.expanded-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    border-color: var(--accent-glow);
+    transform: rotate(90deg);
+}
+
+.expanded-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px;
+}
+
+.expanded-modal-content {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.expanded-modal-content h1,
+.expanded-modal-content h2,
+.expanded-modal-content h3 {
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.expanded-modal-content h1 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+.expanded-modal-content h2 {
+    font-size: 1.5rem;
+}
+
+.expanded-modal-content h3 {
+    font-size: 1.25rem;
+}
+
+.expanded-modal-content code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    color: var(--accent-glow);
+}
+
+.expanded-modal-content pre {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.expanded-modal-content a {
+    color: var(--accent-glow);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.expanded-modal-content a:hover {
+    border-bottom-color: var(--accent-glow);
+}
+
+.expanded-modal-content img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom scrollbar for expanded modal */
+.expanded-modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.expanded-modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.expanded-modal-body::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.4);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.expanded-modal-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.6);
+}
+
+/* Firefox scrollbar */
+.expanded-modal-body {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(56, 189, 248, 0.4) rgba(255, 255, 255, 0.05);
+}

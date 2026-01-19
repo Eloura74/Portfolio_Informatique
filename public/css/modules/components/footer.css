@@ -1,0 +1,199 @@
+/* FOOTER */
+footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 80px 0;
+    background: rgba(0,0,0,0.2);
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.social-links {
+    display: flex;
+    gap: 24px;
+}
+
+.social-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--glass-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+    font-size: 1.1rem;
+}
+
+.social-btn:hover {
+    background: var(--text-primary);
+    color: var(--bg-deep);
+    border-color: var(--text-primary);
+    transform: translateY(-4px);
+}
+
+.footer-text {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* SOCIAL MEDIA CARD */
+.social-card {
+    position: fixed;
+    top: 20%;
+    right: 30px;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 150px;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: rgba(56, 189, 248, 0.2) 0px 7px 29px 0px;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    z-index: 500;
+}
+
+.social-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent-glow) 46%, rgba(255, 204, 112, 0.5) 100%);
+    opacity: 0.4;
+}
+
+.social-logo {
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    transition: all 0.6s ease-in-out;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-family: var(--font-display);
+}
+
+.social-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+
+.social-svg {
+    fill: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
+
+.social-box {
+    position: absolute;
+    padding: 8px;
+    text-align: right;
+    background: rgba(255, 255, 255, 0.15);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10% 13% 42% 0%/10% 12% 75% 0%;
+    box-shadow: rgba(0, 0, 0, 0.2) -5px 5px 20px 0px;
+    transform-origin: bottom left;
+    transition: all 1s ease-in-out;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+}
+
+.social-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.social-box:hover .social-svg {
+    fill: white;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+.social-box1 {
+    width: 65%;
+    height: 65%;
+    bottom: -65%;
+    left: -65%;
+}
+
+.social-box1::before {
+    background: radial-gradient(circle at 30% 107%, #24292e 0%, #24292e 5%, #6cc644 60%, #4078c0 90%);
+}
+
+.social-box1:hover::before {
+    opacity: 1;
+}
+
+.social-box2 {
+    width: 45%;
+    height: 45%;
+    bottom: -45%;
+    left: -45%;
+    transition-delay: 0.15s;
+}
+
+.social-box2::before {
+    background: radial-gradient(circle at 30% 107%, #0077b5 0%, #0077b5 30%, #00a0dc 90%);
+}
+
+.social-box2:hover::before {
+    opacity: 1;
+}
+
+.social-box3 {
+    width: 28%;
+    height: 28%;
+    bottom: -28%;
+    left: -28%;
+    transition-delay: 0.3s;
+}
+
+.social-box3::before {
+    background: radial-gradient(circle at 30% 107%, #1da1f2 0%, #1da1f2 30%, #0d8bd9 90%);
+}
+
+.social-box3:hover::before {
+    opacity: 1;
+}
+
+.social-box4 {
+    width: 12%;
+    height: 12%;
+    bottom: -12%;
+    left: -12%;
+    transition-delay: 0.45s;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-card:hover {
+    transform: scale(1.08);
+    box-shadow: rgba(56, 189, 248, 0.4) 0px 15px 40px 0px;
+}
+
+.social-card:hover .social-box {
+    bottom: -1px;
+    left: -1px;
+}
+
+.social-card:hover .social-logo {
+    transform: translate(58px, -46px);
+    letter-spacing: 0px;
+    font-size: 0.9em;
+}
