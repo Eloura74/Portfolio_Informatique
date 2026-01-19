@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/Portfolio_Informatique_header.png" alt="Bannière Portfolio Informatique" width="100%">
+  <img src="./public/images/Portfolio_Informatique_header.png" alt="Bannière Portfolio Informatique" width="100%">
 </div>
 <br>
 # Générateur de Portfolio GitHub
