@@ -53,7 +53,8 @@ def get_repos():
             
             enhanced_repos = []
             
-            for repo in repos:
+            # Helper to process a single repo
+            def process_repo(repo):
                 repo_name = repo['name']
                 language = repo.get('language', 'Code')
                 
@@ -71,7 +72,8 @@ def get_repos():
                     },
                     'visual': {
                         'preview': f"/repo-visual/{repo_name}?lang={language}",
-                        'color': get_language_color(language)
+                        'color': get_language_color(language),
+                        'custom_header': None
                     },
                     'featured': False,
                     'tagline': repo.get('description', ''),
@@ -81,13 +83,32 @@ def get_repos():
                     'images': []
                 }
                 
+                # Check for overrides in portfolio.json
                 if repo_name in portfolio_data:
                     p_data = portfolio_data[repo_name]
                     repo_data.update(p_data)
                     if repo_data.get('images') and len(repo_data['images']) > 0:
                         repo_data['visual']['preview'] = repo_data['images'][0]
+                
+                # Try to get Social Preview (og:image)
+                # Only if not already overridden by portfolio.json images
+                if '/repo-visual/' in repo_data['visual']['preview']:
+                    og_image = get_og_image(repo_name)
+                    if og_image:
+                        repo_data['visual']['preview'] = og_image
+                        repo_data['visual']['custom_header'] = og_image
 
-                enhanced_repos.append(repo_data)
+                return repo_data
+
+            # Use ThreadPoolExecutor to fetch og:images in parallel
+            import concurrent.futures
+            with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+                enhanced_repos = list(executor.map(process_repo, repos))
+            
+            # Sort by updated_at (which is lost because map doesn't guarantee order if we didn't preserve it, 
+            # but map actually DOES preserve order of results corresponding to input)
+            # However, let's ensure we respect the original sort or re-sort if needed.
+            # The API returned them sorted by updated.
             
             CACHE["data"] = enhanced_repos
             CACHE["timestamp"] = time.time()
@@ -97,6 +118,23 @@ def get_repos():
         return []
     
     return []
+
+def get_og_image(repo_name):
+    """
+    Fetches the Open Graph image (Social Preview) from the repository page.
+    Returns None if not found or error.
+    """
+    import re
+    try:
+        url = f"https://github.com/{GITHUB_USER}/{repo_name}"
+        response = requests.get(url, timeout=2) # Short timeout to not block too long
+        if response.status_code == 200:
+            match = re.search(r'<meta property="og:image" content="([^"]+)"', response.text)
+            if match:
+                return match.group(1)
+    except Exception:
+        pass
+    return None
 
 def get_readme(repo_name, default_branch):
     url = f"https://raw.githubusercontent.com/{GITHUB_USER}/{repo_name}/{default_branch}/README.md"
