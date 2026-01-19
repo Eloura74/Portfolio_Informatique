@@ -1,0 +1,7 @@
+﻿services:
+  portfolio:
+    build: .
+    container_name: eloura_portfolio
+    restart: unless-stopped
+    ports:
+      - "8090:8000"
