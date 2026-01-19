@@ -162,6 +162,20 @@
     .featured-card:hover .featured-overlay {
         opacity: 1;
     }
+
+    /* Hide Social Card on Mobile */
+    .social-card {
+        display: none !important;
+    }
+
+    /* Adjust Back to Top Button */
+    .back-to-top {
+        bottom: 100px; /* Move it up to avoid footer */
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+        opacity: 0.8; /* Make it less visible */
+    }
 }
 
 @media (max-width: 768px) {
