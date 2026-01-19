@@ -1,0 +1,59 @@
+    <section id="projects" class="projects-section reveal">
+        <div class="section-header">
+            <h2 class="section-title">Tous les Projets</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Python">Python</button>
+                <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+                <button class="filter-btn" data-filter="TypeScript">TypeScript</button>
+                <button class="filter-btn" data-filter="HTML">HTML/CSS</button>
+            </div>
+        </div>
+        
+        <div class="projects-grid" id="projects-grid">
+            {% for repo in projects %}
+            <div class="project-card" data-language="{{ repo.language }}" onclick="openProject('{{ repo.name }}', '{{ repo.default_branch }}')">
+                <div class="project-visual">
+                    <img src="{{ repo.visual.preview }}" alt="{{ repo.name }}" class="project-image">
+                    <div class="project-overlay">
+                        <div class="overlay-content">
+                            <div class="project-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>{{ repo.metrics.stars }}</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>{{ repo.metrics.forks }}</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <span>{{ repo.metrics.issues }}</span>
+                                </div>
+                            </div>
+                            <div class="project-cta">
+                                <span class="cta-text">Explorer le projet</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="language-badge" style="--lang-color: {{ repo.visual.color }}">
+                        {{ repo.language if repo.language else 'Code' }}
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">{{ repo.name }}</h3>
+                    <p class="project-description">{{ repo.description if repo.description and repo.description != 'No description available.' else 'Projet de développement avec des fonctionnalités intéressantes à découvrir.' }}</p>
+                    <div class="project-footer">
+                        <div class="project-meta">
+                            <span class="last-update">Mis à jour récemment</span>
+                        </div>
+                        <div class="project-action">
+                            <i class="fas fa-external-link-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>

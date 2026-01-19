@@ -1,0 +1,61 @@
+{
+  "NexusPad": {
+    "featured": true,
+    "title": "NexusPad",
+    "tagline": "MacroPad + interface de configuration",
+    "stack": ["Python", "Flask", "USB HID", "UI"],
+    "highlights": [
+      "Interface full-screen",
+      "Presets par logiciel (Fusion, Orca, etc.)",
+      "Mapping HID robuste"
+    ],
+    "links": {
+      "demo": "#",
+      "video": "#",
+      "article": "#"
+    },
+    "images": ["/static/images/nexusPad.png"]
+  },
+  "JarvisV3": {
+    "featured": true,
+    "title": "JarvisV3",
+    "tagline": "AI Assistant with Realtime Audio",
+    "stack": ["Python", "Streamlit", "OpenAI API", "Audio Processing"],
+    "highlights": [
+      "Realtime audio interaction",
+      "Dynamic voice selection",
+      "Function calling capabilities"
+    ],
+    "links": {
+      "demo": "#",
+      "video": "#"
+    },
+    "images": ["/static/images/Jarvis.png"]
+  },
+  "FamilyOS": {
+    "featured": true,
+    "title": "FamilyOS",
+    "tagline": "Smart Home Management System",
+    "stack": ["TypeScript", "React", "Node.js"],
+    "highlights": [
+      "Centralized dashboard",
+      "Task management",
+      "Calendar integration"
+    ],
+    "links": {},
+    "images": ["/static/images/FamilyOs.png"]
+  },
+  "3dwork-klipper": {
+    "featured": false,
+    "title": "3DWork Klipper",
+    "tagline": "Advanced Klipper Configuration",
+    "stack": ["Klipper", "G-Code", "Macros"],
+    "highlights": [
+      "Optimized macros",
+      "Hardware abstraction",
+      "Community contributions"
+    ],
+    "links": {},
+    "images": []
+  }
+}

@@ -1,0 +1,59 @@
+    <section id="featured" class="featured-section reveal">
+        <div class="section-header">
+            <h2 class="section-title">Projets Phares</h2>
+            <p class="section-subtitle">Sélection de travaux avec impact significatif.</p>
+        </div>
+        
+        <div class="featured-grid">
+            {% for project in featured_projects %}
+            <div class="featured-card" data-project="{{ project.name }}" data-branch="{{ project.default_branch }}">
+                <div class="featured-image">
+                    <img src="{{ project.visual.preview }}" alt="{{ project.name }}">
+                    <div class="featured-overlay">
+                        <div class="btn-text flip-trigger">Voir le case study <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+                <div class="featured-content-wrapper">
+                    <div class="featured-content-inner">
+                        <!-- FRONT SIDE -->
+                        <div class="featured-content featured-front">
+                            <div class="featured-tags">
+                                {% for tech in project.stack %}
+                                <span class="tech-tag">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                            <h3 class="featured-title">{{ project.title if project.title else project.name }}</h3>
+                            <p class="featured-description">{{ project.tagline }}</p>
+                            <ul class="featured-highlights">
+                                {% for highlight in project.highlights %}
+                                <li><i class="fas fa-check"></i> {{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <!-- BACK SIDE -->
+                        <div class="featured-content featured-back">
+                            <div class="back-header">
+                                <h3 class="back-title">{{ project.title if project.title else project.name }}</h3>
+                                <div class="back-actions">
+                                    <button class="expand-btn" title="Agrandir">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                    <button class="close-flip" title="Fermer">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="back-content">
+                                <div class="loading-placeholder">
+                                    <div class="loader-small"></div>
+                                    <p>Chargement du contenu...</p>
+                                </div>
+                                <div class="readme-content" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
