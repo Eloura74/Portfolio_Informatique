@@ -3,3 +3,4 @@ requests
 markdown
 Pygments
 markdown[extra]
+gunicorn
