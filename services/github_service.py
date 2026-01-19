@@ -150,7 +150,28 @@ def get_readme(repo_name, default_branch):
                 }
             }
         )
-        # Fix broken placeholder images
+        
+        # Rewrite relative image URLs to absolute GitHub raw URLs
+        import re
+        def replace_url(match):
+            url = match.group(2)
+            quote = match.group(1)
+            # If it's already absolute, leave it alone
+            if url.startswith(('http://', 'https://', '//')):
+                return f'src={quote}{url}{quote}'
+            
+            # Clean up relative path
+            clean_path = url.lstrip('./')
+            if clean_path.startswith('/'):
+                clean_path = clean_path[1:]
+                
+            # Construct raw GitHub URL
+            raw_url = f"https://raw.githubusercontent.com/{GITHUB_USER}/{repo_name}/{default_branch}/{clean_path}"
+            return f'src={quote}{raw_url}{quote}'
+
+        html_content = re.sub(r'src=(["\'])(.*?)\1', replace_url, html_content)
+
+        # Fix broken placeholder images (keep this for backward compatibility if needed)
         html_content = html_content.replace(
             "https://via.placeholder.com/800x400?text=FamilyOS+Dashboard+Preview", 
             "/static/images/FamilyOs.png"
