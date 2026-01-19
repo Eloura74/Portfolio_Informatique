@@ -1,4 +1,7 @@
-![Socialify](https://socialify.git.ci/Eloura74/Portfolio_Informatique/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Circuit%20Board&theme=Dark)
+<div align="center">
+  <img src="./assets/Portfolio_Informatique_header.png" alt="Bannière Portfolio Informatique" width="100%">
+</div>
+<br>
 # Générateur de Portfolio GitHub
 
 Une application de portfolio dynamique axée sur les données qui présente automatiquement vos projets GitHub. Construit avec Flask et conçu avec une interface utilisateur moderne et responsive.
